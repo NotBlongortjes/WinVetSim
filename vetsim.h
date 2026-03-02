@@ -192,7 +192,8 @@ struct respiration
 	int etco2_indicator;
 	int spo2_indicator;
 	int chest_movement;
-	int manual_breath;			// Set to inject manual breath.		
+	int manual_breath;			// Set to inject manual breath.
+
 	unsigned int manual_count;			// Total of Manual Breaths injected (From II or detected bagging)
 
 	unsigned int breathCount;
