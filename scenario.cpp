@@ -69,6 +69,8 @@
 #include "llist.h"
 // #include "XMLRead.h"
 
+#include <iostream>
+
 int current_scene_id = -1;
 using namespace std;
 const char* xml_filename;
@@ -78,7 +80,6 @@ int checkOnly = 0;
 int errCount = 0;
 
 extern int closeFlag;
-
 
 
 //static void saveData(const xmlChar* xmlName, const xmlChar* xmlValue);
@@ -1048,10 +1049,10 @@ showScene(struct scenario_scene* scene)
 	}
 	
 }
-/** startScene
- * @sceneId: id of new scene
- *
-*/
+///** startScene
+// * @sceneId: id of new scene
+// *
+//*/
 static void
 startScene(int sceneId)
 {
@@ -1110,6 +1111,8 @@ startScene(int sceneId)
 		memset(simmgr_shm->eventList, 0, sizeof(simmgr_shm->eventList));
 
 		processInit(&current_scene->initParams);
+		activateAllMonitors(); // <-- Make robust: set instructor, wait for simmgr to apply, fallback to setting status and clearing instructor flags so UI re-enables buttons
+
 		// Clear completion counts in any trigger groups
 		struct trigger_group * trigger_group;
 		struct scenario_trigger* trigger;
